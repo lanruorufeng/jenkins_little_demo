@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+	string(name: 'env', defaultValue: 'dev', description: 'deploy env')
+    }
     stages {
         stage('Build') {
             steps {
@@ -13,7 +16,17 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                println "Deploy"
+		script {
+		    if ( "$env" == "dev" ) {
+			echo "dev deploying"
+		    }elif ( "env" == 'test' ) {
+			echo "test deploying"
+		    }elif ( "env" == 'prod' ) {
+			echo "prod deploying"
+		    }elif ( "env" == 'stable' ) {
+			echo "stable deploying"
+		    }
+		}
             }
         }
     }
