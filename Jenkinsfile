@@ -19,16 +19,16 @@ pipeline {
 		print "Deploy"
 		print "${params.env}"
 		script {
-		    if ( "$env" == "dev" ) {
+		    if ( "${params.env}" == "dev" ) {
 			echo "dev deploying"
 		    }
-		    if ( "$env" == 'test' ) {
+		    if ( "${params.env}" == 'test' ) {
 			echo "test deploying"
 		    }
-		    if ( "$env" == 'prod' ) {
+		    if ( "${params.env}" == 'prod' ) {
 			echo "prod deploying"
 		    }
-		    if ( "$env" == 'stable' ) {
+		    if ( "${params.env}" == 'stable' ) {
 			echo "stable deploying"
 		    }
 		}
