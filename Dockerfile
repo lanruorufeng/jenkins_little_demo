@@ -20,7 +20,7 @@ ENV JRE_HOME=$JAVA_HOME/jre
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CLASSPATH
 # 向镜像中增加APP文件
-ADD .build/helloworld.war /data/tomcat/webapps/
+ADD ./helloworld.war /data/tomcat/webapps/
 # 对外连接端口号
 EXPOSE 80
 # 容器启动命令
