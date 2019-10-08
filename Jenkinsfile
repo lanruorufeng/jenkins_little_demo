@@ -8,7 +8,7 @@ pipeline {
             steps {
                 println "Build"
 		sh "mkdir ../../jobs/${JOB_NAME}/builds/target"
-		sh "cp helloworld.war ../../jobs/${JOB_NAME}/builds/target/"
+		sh "cp ./helloworld.war ../../jobs/${JOB_NAME}/builds/target/"
             }
         }
         stage('Test') {
