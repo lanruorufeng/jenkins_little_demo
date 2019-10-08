@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
 		print "Deploy"
-		print "$env"
+		print "${params.env}"
 		script {
 		    if ( "$env" == "dev" ) {
 			echo "dev deploying"
