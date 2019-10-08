@@ -19,11 +19,14 @@ pipeline {
 		script {
 		    if ( "$env" == "dev" ) {
 			echo "dev deploying"
-		    }elif ( "env" == 'test' ) {
+		    }
+		    if ( "env" == 'test' ) {
 			echo "test deploying"
-		    }elif ( "env" == 'prod' ) {
+		    }
+		    if ( "env" == 'prod' ) {
 			echo "prod deploying"
-		    }elif ( "env" == 'stable' ) {
+		    }
+		    if ( "env" == 'stable' ) {
 			echo "stable deploying"
 		    }
 		}
