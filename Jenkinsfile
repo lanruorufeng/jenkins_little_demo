@@ -23,25 +23,23 @@ pipeline {
 		script {
 		    if ( "${params.env}" == "dev" ) {
 			echo "dev deploying"
-			CONTAINER="jenkins_little_demo"
-			IMAGE=$CONTAINER":"$(date -d "today" +"%Y%m%d_%H%M%S")
-			docker rm `docker ps -a | grep -w $CONTAINER"_"$CONTAINER | awk '{print $1}'`
-			docker rmi --force `docker images | grep -w $CONTAINER | awk '{print $3}'`
-			docker build -t $IMAGE . && \
-			rm -rf docker-compose.jenkins.yml && \
-			cp docker-compose.src.yml docker-compose.jenkins.yml && \
-			sed -i s%IMAGE_LATEST%$IMAGE%g docker-compose.jenkins.yml && \
-			docker stack deploy -c docker-compose.jenkins.yml $CONTAINER
-			
+			echo "change some compose yml for dev"
+			sh './deploy.sh'			
 		    }
 		    if ( "${params.env}" == 'test' ) {
 			echo "test deploying"
+			echo "change some compose yml for test"
+			sh './deploy.sh'			
 		    }
 		    if ( "${params.env}" == 'prod' ) {
 			echo "prod deploying"
+			echo "change some compose yml for prod"
+			sh './deploy.sh'			
 		    }
 		    if ( "${params.env}" == 'stable' ) {
 			echo "stable deploying"
+			echo "change some compose yml for stable"
+			sh './deploy.sh'			
 		    }
 		}
             }
