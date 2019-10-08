@@ -11,16 +11,16 @@ RUN mkdir jdk
 # 在/data/下创建tomcat目录，用来存放tomcat
 RUN mkdir tomcat
 # 将宿主机的对应版本的jdk目录下的文件拷至镜像/data/jdk目录下
-ADD /opt/soft/${Jdk} /data/jdk/
+ADD /opt/soft/jdk /data/jdk/
 # 将宿主机的对应版本的tomcat目录下的文件拷至镜像/data/tomcat目录下
-ADD /opt/soft/${Tomcat} /data/tomcat/
+ADD /opt/soft/tomcat /data/tomcat/
 # 设置环境变量
 ENV JAVA_HOME=/usr/jdk
 ENV JRE_HOME=$JAVA_HOME/jre
 ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 ENV CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib:$CLASSPATH
 # 向镜像中增加APP文件
-ADD ./build/libs/${ARTIFACT}-${VERSION}-${APPName}.war /data/tomcat/webapps/
+ADD .build/helloworld.war /data/tomcat/webapps/
 # 对外连接端口号
 EXPOSE 80
 # 容器启动命令

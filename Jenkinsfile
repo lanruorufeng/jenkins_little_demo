@@ -7,6 +7,8 @@ pipeline {
         stage('Build') {
             steps {
                 println "Build"
+		sh "mkdir target"
+		sh "cp helloworld.war target/"
             }
         }
         stage('Test') {
