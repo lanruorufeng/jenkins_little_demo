@@ -16,17 +16,19 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+		print "Deploy"
+		print "$env"
 		script {
 		    if ( "$env" == "dev" ) {
 			echo "dev deploying"
 		    }
-		    if ( "env" == 'test' ) {
+		    if ( "$env" == 'test' ) {
 			echo "test deploying"
 		    }
-		    if ( "env" == 'prod' ) {
+		    if ( "$env" == 'prod' ) {
 			echo "prod deploying"
 		    }
-		    if ( "env" == 'stable' ) {
+		    if ( "$env" == 'stable' ) {
 			echo "stable deploying"
 		    }
 		}
