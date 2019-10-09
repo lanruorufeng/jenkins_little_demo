@@ -9,7 +9,7 @@ pipeline {
             steps {
                 println "Building"
 		script {
-		    sh "mkdir ../../jobs/${JOB_NAME}/builds/target"    
+		    sh "mkdir -p ../../jobs/${JOB_NAME}/builds/target"    
 		    if ( "${params.type}" == "app" ) {
 			sh "cp ./helloworld.war ../../jobs/${JOB_NAME}/builds/target/"
             	    }
