@@ -6,14 +6,14 @@ MAINTAINER lanruorufeng@163.com
 RUN mkdir /data
 # 指定后续命令的执行目录
 WORKDIR /data
-# 在/data/下创建jdk目录，用来存放jdk文件
-RUN mkdir jdk
+# 安装JDK
+RUN yum install -y java-1.8.0*
 # 在/data/下创建tomcat目录，用来存放tomcat
 RUN mkdir tomcat
 # 将宿主机的对应版本的jdk目录下的文件拷至镜像/data/jdk目录下
 ADD /opt/soft/jdk /data/jdk/
 # 将宿主机的对应版本的tomcat目录下的文件拷至镜像/data/tomcat目录下
-ADD /opt/soft/tomcat /data/tomcat/
+ADD /opt/tomcat /data/tomcat/
 # 设置环境变量
 ENV JAVA_HOME=/usr/jdk
 ENV JRE_HOME=$JAVA_HOME/jre
@@ -24,4 +24,4 @@ ADD ./helloworld.war /data/tomcat/webapps/
 # 对外连接端口号
 EXPOSE 80
 # 容器启动命令
-ENTRYPOINT ["/usr/tomcat/bin/catalina.sh","run"]
+ENTRYPOINT ["/data/tomcat/apache-tomcat-9.0.26/bin/catalina.sh","run"]
