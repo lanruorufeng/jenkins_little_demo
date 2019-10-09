@@ -15,6 +15,7 @@ if [ "$1" = 'app' ];then
 	docker build -t $IMAGE ./appDockerfile/ && \
 else 
 	docker build -t $IMAGE ./webDockerfile/ && \
+fi
 	
 
 # 删除 docker-compose.yml 文件，防止使用相同镜像
