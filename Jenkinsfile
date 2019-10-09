@@ -19,6 +19,7 @@ pipeline {
 			sh "cp ./webfile/* ../../jobs/${JOB_NAME}/builds/target/"
 		    }
 		}
+	    }
         }
         stage('Test') {
             steps {
