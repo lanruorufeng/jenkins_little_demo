@@ -11,7 +11,11 @@ docker rm `docker ps -a | grep -w $CONTAINER"_"$CONTAINER | awk '{print $1}'`
 docker rmi --force `docker images | grep -w $CONTAINER | awk '{print $3}'`
 
 # 创建新镜像
-docker build -t $IMAGE . && \
+if [ "$1" = 'app' ];then
+	docker build -t $IMAGE ./appDockerfile/ && \
+else 
+	docker build -t $IMAGE ./webDockerfile/ && \
+	
 
 # 删除 docker-compose.yml 文件，防止使用相同镜像
 rm -rf docker-compose.yml && \
